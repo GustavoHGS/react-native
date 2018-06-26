@@ -123,8 +123,8 @@ afterEvaluate {
             }
 
             // Hook bundle${productFlavor}${buildType}JsAndAssets into the android build process
-            currentBundleTask.dependsOn("merge${targetName}Resources")
-            currentBundleTask.dependsOn("merge${targetName}Assets")
+            runBefore("merge${targetName}Resources", currentBundleTask)
+            runBefore("merge${targetName}Assets", currentBundleTask)
 
             runBefore("process${flavorNameCapitalized}Armeabi-v7a${buildNameCapitalized}Resources", currentBundleTask)
             runBefore("process${flavorNameCapitalized}X86${buildNameCapitalized}Resources", currentBundleTask)
